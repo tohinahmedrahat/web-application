@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import firebaseConfig from "../FirebaseConfig/FirebaseConfig";
 
 initializeApp(firebaseConfig)
@@ -20,7 +20,18 @@ const Firebase = () => {
     const createUserWithEmail = (email,password) => {
         return  createUserWithEmailAndPassword(auth,email,password)
       }
-
+    //   update user
+    const updateUser = (name,url) => {
+        updateProfile(auth.currentUser, {
+            displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
+    }
     // login with email
     const loginWithEmail = (email,password) => {
         return signInWithEmailAndPassword(auth, email, password)
