@@ -21,16 +21,8 @@ const Firebase = () => {
         return  createUserWithEmailAndPassword(auth,email,password)
       }
     //   update user
-    const updateUser = (name,url) => {
-        updateProfile(auth.currentUser, {
-            displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
-          }).then(() => {
-            // Profile updated!
-            // ...
-          }).catch((error) => {
-            // An error occurred
-            // ...
-          });
+    const updateUser = (profile) => {
+       return updateProfile(auth.currentUser,profile )
     }
     // login with email
     const loginWithEmail = (email,password) => {
@@ -51,7 +43,7 @@ const Firebase = () => {
     useEffect(() => {
         const userChanged = onAuthStateChanged(auth, (user) => {
              if (user) {
-               console.log(user.email)
+               console.log(user.uid)
                  setUser(user)
                  setLoading(false)
              } else {
@@ -70,7 +62,8 @@ const Firebase = () => {
         logOut,
         createUserWithEmail,
         loginWithEmail,
-        loading
+        loading,
+        updateUser
     }
 }
 

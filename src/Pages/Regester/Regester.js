@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
 
 const Regester = () => {
-    const { setUser, loginWithGoogle, setError, error,createUserWithEmail } = useAuth()
+    const { setUser, loginWithGoogle, setError, error,createUserWithEmail,updateUser } = useAuth()
     const loginInGoogle = () => {
         loginWithGoogle()
             .then(result => {
@@ -23,6 +23,7 @@ const Regester = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photoUrl = form.photourl.value;
         const email = form.email.value;
         const password = form.password.value;
         createUserWithEmail(email,password)
@@ -31,11 +32,23 @@ const Regester = () => {
             setUser(user)
             setError("")
             form.reset()
+            updateUserProfile(name,photoUrl)
         })
         .catch(error => {
             const errorMessage = error.message;
             setError(errorMessage)
             form.reset()
+        })
+    }
+    const updateUserProfile = (name,photoUrl) => {
+        const profile = {
+            displayName:name,
+            photoURL:photoUrl
+        }
+        updateUser(profile)
+        .then(() => {})
+        .catch(error => {
+            console.log(error)
         })
     }
     return (
@@ -68,8 +81,8 @@ const Regester = () => {
                         </div>
                         <TextInput
                             id="name"
-                            type="url"
-                            name='photo'
+                            type="text"
+                            name='photourl'
                             placeholder="enter your photo url"
                         />
                     </div>
