@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
 
 const Login = () => {
-    const { setUser, loginWithGoogle, setError, error,loginWithEmail } = useAuth()
+    const { setUser, loginWithGoogle, setError, error,loginWithEmail,loginWithGithub  } = useAuth()
     const loginInGoogle = () => {
         loginWithGoogle()
             .then(result => {
@@ -81,7 +81,7 @@ const Login = () => {
                     <Button onClick={loginInGoogle}>
                         Login With Google
                     </Button>
-                    <Button>
+                    <Button onClick={loginWithGithub }>
                         Login With Github
                     </Button>
                     <p>New Here <Link className='text-slate-500 font-bold
