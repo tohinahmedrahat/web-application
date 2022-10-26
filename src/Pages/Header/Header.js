@@ -7,7 +7,7 @@ import { FaEllo } from 'react-icons/fa';
 
 
 const Header = () => {
-  const { user } = useAuth()
+  const { user,logOut } = useAuth()
   return (
     <Navbar
       // fluid={true}
@@ -21,30 +21,20 @@ const Header = () => {
       <Navbar.Toggle />
       <Navbar.Collapse>
         <div className='md:flex'>
-          <Navbar.Link active={true}>
             <Link className='mr-2' to="/">Home</Link>
-          </Navbar.Link>
-          <Navbar.Link>
             <Link className='mr-2' to="/course">Course</Link>
-          </Navbar.Link>
-          <Navbar.Link>
             <Link to="/blog">Blog</Link>
-          </Navbar.Link>
         </div>
         <div className='md:flex mx-auto'>
           {
             user.uid ? <>
-              <Tooltip content={user.displayName?user.displayName : "please input your full name"}>
-                <img className='w-8 h-8 rounded-full' src={user.photoURL?user.photoURL : <FaEllo></FaEllo>} alt="" />
+              <Tooltip content={user.displayName ? user.displayName : "please input your full name"}>
+                <img className='w-8 h-8 rounded-full' src={user.photoURL ? user.photoURL : <FaEllo></FaEllo>} alt="" />
               </Tooltip>
-
+              <button onClick={logOut} className='ml-2'>Log out</button>
             </> : <>
-              <Navbar.Link >
                 <Link className='mr-2' to="/login">Login</Link>
-              </Navbar.Link>
-              <Navbar.Link>
                 <Link to="/regester">Regester</Link>
-              </Navbar.Link>
             </>
           }
         </div>

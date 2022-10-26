@@ -57,7 +57,6 @@ const Firebase = () => {
     useEffect(() => {
         const userChanged = onAuthStateChanged(auth, (user) => {
              if (user) {
-               console.log(user.uid)
                  setUser(user)
                  setLoading(false)
              } else {

@@ -1,17 +1,21 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import img from "../../img/login.jpg";
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
 
 const Login = () => {
     const { setUser, loginWithGoogle, setError, error,loginWithEmail,loginWithGithub  } = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     const loginInGoogle = () => {
         loginWithGoogle()
             .then(result => {
                 const user = result.user
                 setUser(user)
                 setError("")
+                navigate(from,{replace:true})
             })
             .catch(error => {
                 const errorMessage = error.message;
@@ -30,6 +34,8 @@ const Login = () => {
             setUser(user)
             setError("")
             form.reset()
+            navigate(from,{replace:true})
+
         })
         .catch(error => {
             const errorMessage = error.message;
