@@ -2,11 +2,12 @@ import React from 'react';
 import { Navbar, Tooltip } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
+import { FaEllo } from 'react-icons/fa';
+
 
 
 const Header = () => {
   const { user } = useAuth()
-  console.log(user.displayName, user.photoURL)
   return (
     <Navbar
       // fluid={true}
@@ -33,8 +34,8 @@ const Header = () => {
         <div className='md:flex mx-auto'>
           {
             user.uid ? <>
-              <Tooltip content={user.displayName}>
-                <img className='w-8 h-8 rounded-full' src={user.photoURL} alt="" />
+              <Tooltip content={user.displayName?user.displayName : "please input your full name"}>
+                <img className='w-8 h-8 rounded-full' src={user.photoURL?user.photoURL : <FaEllo></FaEllo>} alt="" />
               </Tooltip>
 
             </> : <>

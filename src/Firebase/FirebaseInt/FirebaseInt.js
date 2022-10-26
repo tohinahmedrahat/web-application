@@ -6,7 +6,7 @@ import firebaseConfig from "../FirebaseConfig/FirebaseConfig";
 initializeApp(firebaseConfig)
 
 const Firebase = () => {
-    const [user,setUser] = useState(null)
+    const [user,setUser] = useState({})
     const [error,setError] = useState('')
     const [loading,setLoading] = useState(true)
     const auth = getAuth();

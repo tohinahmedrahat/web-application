@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import banner from "../../img/banner.jpg"
+import CategoriesCard from '../CategoriesCard/CategoriesCard';
 
 const Home = () => {
+    const categories = useLoaderData()
     return (
         <div className='bg-slate-400'>
             <div className='md:flex md:w-3/4 md:mx-auto pt-4'>
@@ -14,6 +16,11 @@ const Home = () => {
             <div className='md:ml-4'>
                 <img src={banner} alt="" />
             </div>
+        </div>
+        <div className='md:grid-cols-3 md:grid md:gap-3 md:ml-6 mt-6'>
+            {
+                categories.map(categorie => <CategoriesCard key={categorie.id} categorie={categorie}></CategoriesCard> )
+            }
         </div>
         </div>
     );
