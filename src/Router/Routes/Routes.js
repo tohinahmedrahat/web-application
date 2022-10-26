@@ -17,14 +17,16 @@ const router = createBrowserRouter([
                 element:<Home></Home>
             },
             {
-                path:"/course/:id",
-                loader:({params}) => fetch(`http://localhost:5000/course/${params.id}`),
-                element:<CourseDeatls></CourseDeatls>
-            },
-            {
                 path:"/course",
                 loader: () => fetch("http://localhost:5000/course-categories"),
-                element:<Course></Course>
+                element:<Course></Course>,
+                children:[
+                    {
+                        path:"/course/:id",
+                        loader:({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                        element:<CourseDeatls></CourseDeatls>
+                    },
+                ]
             },
             {
                 path:"/login",
