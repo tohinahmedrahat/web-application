@@ -6,6 +6,7 @@ import Enroll from "../../Pages/Enroll/Enroll";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Main from "../../Pages/Main/Main";
+import Page404 from "../../Pages/Page404/Page404";
 import Regester from "../../Pages/Regester/Regester";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
             {
                 path:"/regester",
                 element:<Regester></Regester>
+            },
+            {
+                path:"*",
+                element: <Page404></Page404>
+                
             }
         ]
     }
