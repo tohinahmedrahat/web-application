@@ -11,7 +11,7 @@ const Course = () => {
                         categories.map(categorie => <Link className='bg-sky-500 rounded-2xl text-white my-2 py-2 font-bold hover:bg-cyan-400' key={categorie.id} to={`/course/${categorie.id}`}>{categorie.name}</Link>)
                     }
                 </div>
-                <div className='w-3/4'>
+                <div className='md:w-3/4'>
                     <Outlet></Outlet>
                 </div>
             </div>

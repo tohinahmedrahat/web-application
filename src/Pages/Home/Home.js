@@ -19,7 +19,8 @@ const Home = () => {
                 <img src={banner} alt="" />
             </div>
         </div>
-        <div className='md:grid-cols-3 md:grid md:gap-3 md:ml-6 mt-6 pb-3'>
+        <div className='md:grid-cols-3 md:grid md:gap-3 md:ml-6 mt-6 pb-3
+        '>
             {
                 categories.map(categorie => <CategoriesCard key={categorie.id} categorie={categorie}></CategoriesCard> )
             }
