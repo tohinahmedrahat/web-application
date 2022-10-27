@@ -8,7 +8,7 @@ const Course = () => {
             <div className='md:flex'>
                 <div className='flex flex-col md:w-1/4'>
                     {
-                        categories.map(categorie => <Link className='bg-slate-700 text-white my-2 py-2 font-bold' key={categorie.id} to={`/course/${categorie.id}`}>{categorie.name}</Link>)
+                        categories.map(categorie => <Link className='bg-sky-500 rounded-2xl text-white my-2 py-2 font-bold hover:bg-cyan-400' key={categorie.id} to={`/course/${categorie.id}`}>{categorie.name}</Link>)
                     }
                 </div>
                 <div className='w-3/4'>

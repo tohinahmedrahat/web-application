@@ -16,24 +16,24 @@ const router = createBrowserRouter([
         children:[
             {
                 path:"/",
-                loader: () => fetch("http://localhost:5000/course-categories"),
+                loader: () => fetch("https://web-application-learn-server.vercel.app/course-categories"),
                 element:<Home></Home>
             },
             {
                 path:"/course",
-                loader: () => fetch("http://localhost:5000/course-categories"),
+                loader: () => fetch("https://web-application-learn-server.vercel.app/course-categories"),
                 element:<Course></Course>,
                 children:[
                     {
                         path:"/course/:id",
-                        loader:({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                        loader:({params}) => fetch(`https://web-application-learn-server.vercel.app/course/${params.id}`),
                         element:<CourseDeatls></CourseDeatls>
                     },
                 ]
             },
             {
                 path:"/enroll/:id",
-                loader:({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                loader:({params}) => fetch(`https://web-application-learn-server.vercel.app/course/${params.id}`),
                 element:<PrivateRoute><Enroll></Enroll></PrivateRoute>
             },
             {
