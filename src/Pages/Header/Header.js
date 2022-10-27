@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, Tooltip } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
-import { FaEllo } from 'react-icons/fa';
+import { FaEllo, FaMoon } from 'react-icons/fa';
 
 
 
 const Header = () => {
   const { user,logOut } = useAuth()
+  const [theme,setThemes] = useState("light")
+  const handleTheme = () => {
+    // console.log("hellow")
+  setThemes(theme === "dark" ? "light" : "dark")
+}
+  useEffect(() => {
+    if(theme === "dark"){
+      document.documentElement.classList.add("dark")
+    }else{
+      document.documentElement.classList.remove("dark")
+    }
+  },[theme])
+ 
   return (
     <Navbar
       // fluid={true}
@@ -37,6 +50,7 @@ const Header = () => {
                 <Link to="/regester">Regester</Link>
             </>
           }
+          <button onClick={handleTheme} className='ml-3 text-lg'><FaMoon></FaMoon></button>
         </div>
       </Navbar.Collapse>
     </Navbar>

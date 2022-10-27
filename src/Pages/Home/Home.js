@@ -7,8 +7,8 @@ import CategoriesCard from '../CategoriesCard/CategoriesCard';
 const Home = () => {
     const categories = useLoaderData()
     return (
-        <div>
-            <div className='bg-cyan-100'>
+        <div className='dark:bg-slate-900 dark:text-gray-200'>
+            <div className='bg-cyan-100 dark:bg-slate-900 dark:text-gray-200'>
             <div className='md:flex md:w-3/4 md:mx-auto pt-4'>
             <div className='md:w-3/4'>
                 <h1 className='capitalize text-gray-600 text-3xl font-bold md:mt-24'>welcome to our learning world</h1>
